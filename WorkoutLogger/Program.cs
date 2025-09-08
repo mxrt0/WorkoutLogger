@@ -10,7 +10,13 @@ public class Program
 
         // Add services to the container.
         builder.Services.AddRazorPages();
-        builder.Services.AddDbContext<WorkoutLoggerDbContext>(options => options.UseSqlite(builder.Configuration.GetConnectionString("ConnectionString")));
+        builder.Services.AddDbContext<WorkoutLoggerDbContext>(options =>
+            options.UseSqlite(
+                builder.Configuration.GetConnectionString("ConnectionString"),
+                 b => b.MigrationsAssembly(typeof(WorkoutLoggerDbContext).Assembly.FullName)
+            )
+            .UseSnakeCaseNamingConvention()
+        );
         var app = builder.Build();
 
         // Configure the HTTP request pipeline.
