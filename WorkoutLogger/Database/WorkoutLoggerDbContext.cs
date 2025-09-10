@@ -6,6 +6,11 @@ public class WorkoutLoggerDbContext : DbContext
 {
     public WorkoutLoggerDbContext(DbContextOptions options) : base(options) { }
 
+    public WorkoutLoggerDbContext()
+    {
+
+    }
+
     public DbSet<Workout> Workouts { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)

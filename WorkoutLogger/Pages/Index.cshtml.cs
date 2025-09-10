@@ -1,20 +1,19 @@
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using WorkoutLogger.Database.Entities;
 
-namespace WorkoutLogger.Pages
+namespace WorkoutLogger.Pages;
+
+public class IndexModel : PageModel
 {
-    public class IndexModel : PageModel
+    public IndexModel()
     {
-        private readonly ILogger<IndexModel> _logger;
 
-        public IndexModel(ILogger<IndexModel> logger)
-        {
-            _logger = logger;
-        }
+    }
 
-        public void OnGet()
-        {
+    public List<Workout> Workouts { get; set; }
 
-        }
+    public void OnGet()
+    {
+
     }
 }
