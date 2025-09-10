@@ -4,6 +4,47 @@
     ViewData["Title"] = "Home Page";
 }
 
-<a button type="button" class="btn btn-success" asp-area="" asp-page="/Create">
-    Add New Workout
-</a>
+
+<div class="container d-flex justify-content-center align-items-center flex-lg-column">
+    @if (Model.Workouts.Count >= 1)
+    {
+        <table id="workouts" class="table table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th>@Html.DisplayNameFor(m => m.Workouts[0].Date)</th>
+                    <th>@Html.DisplayNameFor(m => m.Workouts[0].StartTime)</th>
+                    <th>@Html.DisplayNameFor(m => m.Workouts[0].EndTime)</th>
+                    <th>@Html.DisplayNameFor(m => m.Workouts[0].Duration)</th>
+                    <th>@Html.DisplayNameFor(m => m.Workouts[0].MuscleGroup)</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var workout in Model.Workouts)
+                {
+                    <tr >
+                        <td>@Html.DisplayFor(modelItem => workout.Date.Date)</td>
+                        <td>@Html.DisplayFor(modelItem => workout.StartTime.TimeOfDay)</td>
+                        <td>@Html.DisplayFor(modelItem => workout.EndTime.TimeOfDay)</td>
+                        <td>@Html.DisplayFor(modelItem => workout.Duration)</td>
+                        <td>@Html.DisplayFor(modelItem => workout.MuscleGroup)</td>
+                        <td>
+                            <a class="btn btn-danger" asp-page="./Delete" asp-route-id="@workout.Id">Delete</a>
+                            <a class="btn btn-primary" asp-page="./Update" asp-route-id="@workout.Id">Edit</a>
+                        </td>
+                        
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <h2 class="text-decoration-underline text-lg-center">No workouts have been added yet.</h2>
+    }
+
+    <hr class="w-100"/>
+
+    <a button type="button" class="btn btn-success w-20" asp-area="" asp-page="/Create">
+        Add New Workout
+    </a>
+</div>
