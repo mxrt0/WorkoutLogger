@@ -1,0 +1,41 @@
+﻿@page
+@model WorkoutLogger.Pages.UpdateModel
+@{
+    ViewData["Title"] = "Update Workout";
+}
+
+<h2 class="text-center">Update Workout</h2>
+<hr />
+<div class="row justify-content-center">
+
+    <div class="col-md-4 d-flex flex-column align-items-center">
+        <form method="post">
+            <input type="hidden" asp-for="NewWorkout.Id" />
+            <div class="form-group">
+                <label asp-for="NewWorkout.Date" class="col-form-label"></label>
+                <input type="date" asp-for="NewWorkout.Date" class="form-control" />
+                <span asp-validation-for="NewWorkout.Date" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NewWorkout.StartTime" class="col-sm-2 col-form-label"></label>
+                <input type="time" asp-for="NewWorkout.StartTime" class="form-control" />
+                <span asp-validation-for="NewWorkout.StartTime" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NewWorkout.EndTime" class="col-sm-2 col-form-label"></label>
+                <input type="time" asp-for="NewWorkout.EndTime" class="form-control" />
+                <span asp-validation-for="NewWorkout.EndTime" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NewWorkout.MuscleGroup" class="col-sm-2 col-form-label"></label>
+                <select asp-for="NewWorkout.MuscleGroup" class="form-control" asp-items="Html.GetEnumSelectList<MuscleGroup>()">
+                </select>
+            </div>
+            <br />
+            <div class="form-group">
+                <input type="submit" value="Update Workout" class="btn btn-success mb-3" /><br />
+                <a class="btn btn-primary" asp-page="./Index">Back To Home</a>
+            </div>
+        </form>
+    </div>
+</div>

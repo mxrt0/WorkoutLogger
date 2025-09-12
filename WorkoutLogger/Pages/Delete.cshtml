@@ -1,6 +1,7 @@
 ﻿@page
 @model WorkoutLogger.Pages.DeleteModel
 @{
+    ViewData["Title"] = "Delete Workout";
 }
 
 <h2 class="text-decoration-underline text-lg-center">
@@ -42,7 +43,7 @@
     </dl>
     <hr class="w-100" />
     <form method="post" class="d-flex flex-column align-items-center justify-content-center">
-        <input type="submit" value="Delete" class="btn btn-danger" /><br />
+        <input type="submit" value="Delete" class="btn btn-danger mb-3" /><br />
         <a class="btn btn-primary" asp-page="./Index">Back To Home</a>
     </form>
 </div>

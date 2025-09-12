@@ -29,6 +29,6 @@ public class CreateModel : PageModel
 
         _context.Workouts.Add(new Workout(Workout.Date, Workout.StartTime, Workout.EndTime, Workout.MuscleGroup));
         _context.SaveChanges();
-        return RedirectToPage("./Index");
+        return RedirectToPage("./Success");
     }
 }

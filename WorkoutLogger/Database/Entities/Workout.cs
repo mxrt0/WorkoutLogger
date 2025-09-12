@@ -18,6 +18,8 @@ public class Workout
     public DateTime EndTime { get; set; }
     public TimeSpan Duration { get; set; }
     public MuscleGroup MuscleGroup { get; set; }
+
+    public void CalculateDuration() => Duration = EndTime - StartTime;
 }
 
 public enum MuscleGroup
