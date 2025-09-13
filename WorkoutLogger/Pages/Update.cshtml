@@ -8,6 +8,10 @@
 <hr />
 <div class="row justify-content-center">
 
+    @if (Model.ShowInvalidTimeHeader)
+    {
+        <div class="alert alert-danger text-center mb-2 p-2">Please enter valid start and end time!</div>
+    }
     <div class="col-md-4 d-flex flex-column align-items-center">
         <form method="post">
             <input type="hidden" asp-for="NewWorkout.Id" />
@@ -33,7 +37,7 @@
             </div>
             <br />
             <div class="form-group">
-                <input type="submit" value="Update Workout" class="btn btn-success mb-3" /><br />
+                <input type="submit" value="Update Workout" class="btn btn-success mb-2" />
                 <a class="btn btn-primary" asp-page="./Index">Back To Home</a>
             </div>
         </form>

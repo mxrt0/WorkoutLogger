@@ -4,10 +4,17 @@
     ViewData["Title"] = "Add Workout";
 }
 
-<h2 class="text-center">Add New Workout</h2>
+<h2 class="text-center text-decoration-underline">Add New Workout</h2>
 <hr />
-<div class="row justify-content-center">
-    <div class="col-md-4 d-flex flex-column align-items-center">
+
+<div class="row justify-content-centerc col-md-6 mx-auto">
+
+        @if (Model.ShowInvalidTimeHeader)
+        {
+            <div class="alert alert-danger text-center mb-2 p-2">Please enter valid start and end time!</div>
+        }
+
+    <div class="d-flex flex-column align-items-center">
         <form  method="post">
             <div class="form-group">
                 <label asp-for="Workout.Date" class="col-form-label"></label>
@@ -29,9 +36,10 @@
                 <select asp-for="Workout.MuscleGroup" class="form-control" asp-items="Html.GetEnumSelectList<MuscleGroup>()">
                 </select>
             </div>
-            <br />
-            <div class="form-group">
-                <input type="submit" value="Add Workout" class="btn btn-success mb-3" /><br />
+
+            <hr />
+            <div class="form-group d-flex flex-column gap-2 justify-content-center">
+                <input type="submit" value="Add Workout" class="btn btn-success mb-2" />
                 <a class="btn btn-primary" asp-page="./Index">Back To Home</a>
             </div>
         </form>

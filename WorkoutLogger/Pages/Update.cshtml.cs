@@ -16,6 +16,8 @@ public class UpdateModel : PageModel
     [BindProperty]
     public Workout NewWorkout { get; set; }
 
+    public bool ShowInvalidTimeHeader { get; set; }
+
     public IActionResult OnGet(int id)
     {
         NewWorkout = GetById(id);
@@ -30,6 +32,17 @@ public class UpdateModel : PageModel
 
     public IActionResult OnPost()
     {
+        if (!ModelState.IsValid)
+        {
+            return Page();
+        }
+
+        if (NewWorkout.EndTime < NewWorkout.StartTime)
+        {
+            ShowInvalidTimeHeader = true;
+            return Page();
+        }
+
         var workoutToUpdate = _context.Workouts.First(x => x.Id == NewWorkout.Id);
 
         workoutToUpdate.Date = NewWorkout.Date;

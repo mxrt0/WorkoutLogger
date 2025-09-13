@@ -4,7 +4,7 @@
     ViewData["Title"] = "Home Page";
 }
 
-
+<h2 class="text-lg-center text-decoration-underline">Your Workouts</h2>
 <div class="container d-flex justify-content-center align-items-center flex-lg-column">
     @if (Model.Workouts.Count >= 1)
     {
@@ -22,9 +22,9 @@
                 @foreach (var workout in Model.Workouts)
                 {
                     <tr >
-                        <td>@Html.DisplayFor(modelItem => workout.Date.Date)</td>
-                        <td>@Html.DisplayFor(modelItem => workout.StartTime.TimeOfDay)</td>
-                        <td>@Html.DisplayFor(modelItem => workout.EndTime.TimeOfDay)</td>
+                        <td>@Html.DisplayFor(modelItem => workout.Date)</td>
+                        <td>@Html.DisplayFor(modelItem => workout.StartTime)</td>
+                        <td>@Html.DisplayFor(modelItem => workout.EndTime)</td>
                         <td>@Html.DisplayFor(modelItem => workout.Duration)</td>
                         <td>@Html.DisplayFor(modelItem => workout.MuscleGroup)</td>
                         <td>

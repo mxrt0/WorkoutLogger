@@ -20,10 +20,18 @@ public class CreateModel : PageModel
     [BindProperty]
     public Workout Workout { get; set; }
 
+    public bool ShowInvalidTimeHeader { get; set; }
+
     public IActionResult OnPost()
     {
         if (!ModelState.IsValid)
         {
+            return Page();
+        }
+
+        if (Workout.EndTime < Workout.StartTime)
+        {
+            ShowInvalidTimeHeader = true;
             return Page();
         }
 
