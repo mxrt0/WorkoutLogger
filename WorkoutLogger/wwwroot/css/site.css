@@ -15,8 +15,37 @@ html {
 html {
   position: relative;
   min-height: 100%;
+  overflow-y: hidden;
 }
 
 body {
   margin-bottom: 60px;
+}
+
+tr td {
+    vertical-align: middle;
+}
+
+.logo {
+    width: 70px;
+}
+
+.background {
+    position: relative;
+    z-index: 1;
+    min-height: 100vh;
+    margin: 0;
+}
+
+.background::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background-image: url(/img/pexels-anush-1229356.jpg);
+    opacity: .3;
+    background-size: cover;
 }

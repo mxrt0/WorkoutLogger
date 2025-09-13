@@ -42,9 +42,10 @@
         <h2 class="text-decoration-underline text-lg-center">No workouts have been added yet.</h2>
     }
 
-    <hr class="w-100"/>
-
     <a button type="button" class="btn btn-success w-20" asp-area="" asp-page="/Create">
         Add New Workout
     </a>
 </div>
+
+<p class="text-lg-start fw-bolder text-decoration-underline">Total Hours Spent Working Out: @ViewData["Total"]</p>
+

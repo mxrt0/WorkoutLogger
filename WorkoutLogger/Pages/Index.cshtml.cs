@@ -17,6 +17,7 @@ public class IndexModel : PageModel
     public void OnGet()
     {
         Workouts = GetAllWorkouts();
+        ViewData["Total"] = TimeSpan.FromTicks(Workouts.Sum(x => x.Duration.Ticks)).ToString("hh\\:mm");
     }
 
     private List<Workout> GetAllWorkouts()
