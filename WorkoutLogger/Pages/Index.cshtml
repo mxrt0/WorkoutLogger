@@ -4,11 +4,11 @@
     ViewData["Title"] = "Home Page";
 }
 
-<h2 class="text-lg-center text-decoration-underline">Your Workouts</h2>
-<div class="container d-flex justify-content-center align-items-center flex-lg-column">
+<div id="main-page-div" class="container d-flex justify-content-center align-items-center flex-lg-column">
+    <h2 id="workouts-txt"class="text-lg-center text-decoration-underline">Your Workouts</h2>
     @if (Model.Workouts.Count >= 1)
     {
-        <table id="workouts" class="table table-hover">
+        <table id="workouts" class="table table-hover table-bordered">
             <thead>
                 <tr>
                     <th>@Html.DisplayNameFor(m => m.Workouts[0].Date)</th>
@@ -16,6 +16,7 @@
                     <th>@Html.DisplayNameFor(m => m.Workouts[0].EndTime)</th>
                     <th>@Html.DisplayNameFor(m => m.Workouts[0].Duration)</th>
                     <th>@Html.DisplayNameFor(m => m.Workouts[0].MuscleGroup)</th>
+                    <th>Actions</th>
                 </tr>
             </thead>
             <tbody>
@@ -45,7 +46,8 @@
     <a button type="button" class="btn btn-success w-20" asp-area="" asp-page="/Create">
         Add New Workout
     </a>
+    <p id="total-hrs"class="text-lg-start fw-bolder text-decoration-underline">Total Hours Spent Working Out: @ViewData["Total"]</p>
 </div>
 
-<p class="text-lg-start fw-bolder text-decoration-underline">Total Hours Spent Working Out: @ViewData["Total"]</p>
+
 
