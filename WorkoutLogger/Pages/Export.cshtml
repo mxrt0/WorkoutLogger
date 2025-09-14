@@ -1,0 +1,52 @@
+﻿@page
+@model WorkoutLogger.Pages.ExportModel
+@{
+    ViewData["Title"] = "Export";
+}
+
+<div id="loader" class="d-flex flex-column justify-content-center align-items-center w-auto">
+
+        <span id="status" class="mb-4 mt-2 text-center text-decoration-underline"></span>
+        <div id="spinner"class="spinner-border text-primary mb-2" role="status"></div>
+        <a id="download" class="btn btn-success visually-hidden mb-2">Download</a>
+        <a id="home-btn" class="btn btn-primary visually-hidden" asp-page="./Index" >Back To Home</a>
+        
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const spinner = document.getElementById('spinner');
+        const status = document.getElementById("status");
+        status.textContent = "Exporting...";
+
+        fetch('/Export?handler=ExportExcel')
+            .then(response => response.blob())
+            .then(blob => {
+                
+                const url = window.URL.createObjectURL(blob);
+                const a = document.getElementById('download');
+                a.href = url;
+                a.download = "Workouts.xlsx";
+
+                status.textContent = "Export Completed!";
+                spinner.classList.add("visually-hidden");
+
+                a.classList.remove("visually-hidden");
+                document.getElementById('home-btn').classList.remove("visually-hidden");
+
+                a.addEventListener('click', () => {
+              
+                    setTimeout(() => {
+                        window.URL.revokeObjectURL(url);
+                        a.remove();
+                    }, 1000);
+                    
+                });
+            })
+            .catch(() => {
+            status.textContent = "Export Failed!";
+            spinner.classList.add("visually-hidden");
+        });
+
+    });
+</script>

@@ -51,7 +51,7 @@ tr td {
     background-size: cover;
 }
 
-#main-page-div {
+#main-page-div{
     background-color: rgba(0,0,0,0.2);
 }
 
@@ -76,7 +76,7 @@ tr td {
         border-right: 2px solid rgba(255,255,255,0.8);
         color: rgba(255,255,255,0.9);
         font-weight: bold;
-        text-shadow: 0 3px 18px rgba(0,0,0,0.8);
+        text-shadow: 0 3px 12px rgba(0,0,0,0.8);
     }
 
 .table thead th {
@@ -95,6 +95,20 @@ tr td {
     margin-top: 8px;
     margin-bottom: 12px;
     text-shadow: 0 3px 15px rgba(0,0,0,0.3);
+}
+
+#main-title {
+    text-shadow: 0 3px 10px rgba(0,0,0,0.3);
+    margin: auto;
+}
+
+#loader {
+    height: 80vh;
+}
+
+#loader span {
+
+    font-size:50px;
 }
 
 

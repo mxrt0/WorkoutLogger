@@ -22,6 +22,6 @@ public class IndexModel : PageModel
 
     private List<Workout> GetAllWorkouts()
     {
-        return _context.Workouts.ToList();
+        return _context.Workouts.OrderBy(w => w.Date).ToList();
     }
 }

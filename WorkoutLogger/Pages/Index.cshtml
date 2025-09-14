@@ -43,10 +43,18 @@
         <h2 class="text-decoration-underline text-lg-center">No workouts have been added yet.</h2>
     }
 
-    <a button type="button" class="btn btn-success w-20" asp-area="" asp-page="/Create">
-        Add New Workout
-    </a>
-    <p id="total-hrs"class="text-lg-start fw-bolder text-decoration-underline">Total Hours Spent Working Out: @ViewData["Total"]</p>
+    <div class="d-flex justify-content-between align-items-center w-100 mb-2">
+        <a type="button" class="btn btn-success w-20 align-self-start" asp-area="" asp-page="/Create">
+            Add New Workout
+        </a>
+        <span id="total-hrs" class="text-lg-start fw-bolder text-decoration-underline">Total Hours Spent Working Out: @ViewData["Total"]</span>
+        @if (Model.Workouts.Count >= 1)
+        {
+            <a type="button" class="btn btn-success" asp-area="" asp-page="/Export">Export Workouts To Excel Sheet</a>
+        }
+        
+    </div>
+    
 </div>
 
 

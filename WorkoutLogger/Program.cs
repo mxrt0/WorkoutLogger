@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using OfficeOpenXml;
 using WorkoutLogger.Database;
 namespace WorkoutLogger;
 
@@ -6,6 +7,7 @@ public class Program
 {
     public static void Main(string[] args)
     {
+        ExcelPackage.License.SetNonCommercialPersonal("mxrt0");
         var builder = WebApplication.CreateBuilder(args);
 
         // Add services to the container.
